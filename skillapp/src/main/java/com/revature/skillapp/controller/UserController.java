@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.skillapp.dao.UserRatingDAO;
 import com.revature.skillapp.model.User;
 import com.revature.skillapp.repository.UserRepository;
 
@@ -18,6 +19,9 @@ public class UserController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserRatingDAO userRatingDAO;
 
 	@PostMapping("/login")
 	public User login(@RequestBody User user) {
@@ -31,8 +35,8 @@ public class UserController {
 	@PostMapping
 	public User save(@RequestBody User user )
 	{
-		User result=userRepository.save(user);
-		result.setPassword(null);
-	   	return result;
+		User result = userRepository.save(user);
+		userRatingDAO.addRating(result.getId());
+return result;
 	}
 }

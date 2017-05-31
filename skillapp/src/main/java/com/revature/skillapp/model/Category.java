@@ -10,9 +10,13 @@ import javax.persistence.Table;
 @Table(name="category")
 public class Category {
 	
+	@Override
+	public String toString() {
+		return "Category [cId=" + cId + ", categoryName=" + categoryName + ", isActive=" + isActive + "]";
+	}
 	@Id
 	@GeneratedValue
-	@Column(name = "c_id")
+	@Column(name = "id")
 	private Long cId;
 	
 	public Long getcId() {

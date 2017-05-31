@@ -17,10 +17,25 @@ public class Skill {
 	@Column(name = "id")
 	private Integer id;
 	
+	@Column(name="name")
+	private String name;
 	
-	@JoinColumn(name = "cat_id" )
 	@ManyToOne
+	@JoinColumn(name = "cat_id" )
 	private Category category;
+	
+	@Column(name="is_active")
+	private Integer isActive;
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 	public Category getCategory() {
 		return category;
@@ -28,8 +43,7 @@ public class Skill {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	@Column(name="is_active")
-	private Integer isActive;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -43,8 +57,10 @@ public class Skill {
 	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Skill [id=" + id + ", name=" + name + ", category=" + category + ", isActive=" + isActive + "]";
+	}
 	
 
 	
